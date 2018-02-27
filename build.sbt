@@ -2,8 +2,8 @@ lazy val commonSettings = Seq(
   organization := "com.github.cornerman",
   version      := "0.1.0-SNAPSHOT",
 
-  scalaVersion := "2.12.4",
-  crossScalaVersions := Seq("2.11.11", "2.12.4"),
+  scalaVersion := "2.11.12",
+  crossScalaVersions := Seq("2.11.12", "2.12.4"),
 
   scalacOptions ++=
     "-encoding" :: "UTF-8" ::
@@ -33,7 +33,11 @@ lazy val commonSettings = Seq(
     }
   },
 
-  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
+  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4"),
+
+  resolvers ++=
+    ("android-cuid bintray" at "http://dl.bintray.com/vivareal/maven") ::
+    Nil
 )
 
 lazy val root = (project in file("."))
@@ -50,7 +54,7 @@ lazy val cuid = crossProject
   )
   .jvmSettings(
     libraryDependencies ++=
-      Deps.cuidJava.value ::
+      aar(Deps.cuidJava.value) ::
       Nil
   )
   .jsSettings(

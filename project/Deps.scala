@@ -7,5 +7,5 @@ object Deps {
   import Def.{setting => dep}
 
   val scalaTest = dep("org.scalatest" %%% "scalatest" % "3.0.4")
-  val cuidJava = dep("cool.graph" % "cuid-java" % "0.1.1")
+  val cuidJava = dep("br.com.vivareal" % "cuid-android" % "0.1.1")
 }
