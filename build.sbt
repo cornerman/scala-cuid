@@ -36,6 +36,7 @@ lazy val commonSettings = Seq(
   addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4"),
 
   resolvers ++=
+    ("google" at "https://maven.google.com") ::
     ("android-cuid bintray" at "http://dl.bintray.com/vivareal/maven") ::
     Nil
 )
