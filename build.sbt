@@ -33,7 +33,7 @@ lazy val commonSettings = Seq(
     }
   },
 
-  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
+  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.10")
 )
 
 lazy val root = (project in file("."))
