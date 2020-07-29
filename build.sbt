@@ -45,7 +45,6 @@ lazy val root = (project in file("."))
   .settings(commonSettings)
 
 lazy val cuid = crossProject(JSPlatform, JVMPlatform)
-  .crossType(CrossType.Pure)
   .settings(commonSettings)
   .settings(
     name := "scala-cuid",
