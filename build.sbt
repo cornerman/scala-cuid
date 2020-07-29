@@ -1,3 +1,5 @@
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
+
 lazy val commonSettings = Seq(
   organization := "com.github.cornerman",
   version      := "0.1.0-SNAPSHOT",
@@ -42,7 +44,8 @@ lazy val root = (project in file("."))
   .aggregate(cuidJS, cuidJVM)
   .settings(commonSettings)
 
-lazy val cuid = crossProject
+lazy val cuid = crossProject(JSPlatform, JVMPlatform)
+  .crossType(CrossType.Pure)
   .settings(commonSettings)
   .settings(
     name := "scala-cuid",
