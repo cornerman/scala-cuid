@@ -14,7 +14,6 @@ lazy val commonSettings = Seq(
     "-explaintypes" ::
     "-feature" ::
     "-language:_" ::
-    "-Xfuture" ::
     "-Xlint" ::
     "-Ywarn-value-discard" ::
     "-Ywarn-unused" ::
@@ -26,6 +25,7 @@ lazy val commonSettings = Seq(
         "-Ywarn-extra-implicit" ::
         Nil
       case Some((2, 11) | (2, 12)) =>
+        "-Xfuture" ::
         "-Ywarn-nullary-override" ::
         "-Ywarn-nullary-unit" ::
         "-Ywarn-infer-any" ::
