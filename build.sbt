@@ -42,7 +42,9 @@ lazy val commonSettings = Seq(
 
 lazy val root = (project in file("."))
   .aggregate(cuidJS, cuidJVM)
-  .settings(commonSettings)
+  .settings(
+    skip in publish := true
+  )
 
 lazy val cuid = crossProject(JSPlatform, JVMPlatform)
   .settings(commonSettings)
