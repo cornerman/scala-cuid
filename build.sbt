@@ -4,8 +4,8 @@ lazy val commonSettings = Seq(
   organization := "com.github.cornerman",
   version      := "0.1.0-SNAPSHOT",
 
-  scalaVersion := "2.12.10",
-  crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.0"),
+  scalaVersion := "2.12.14",
+  crossScalaVersions := Seq("2.11.12", "2.12.14", "2.13.0"),
 
   scalacOptions ++=
     "-encoding" :: "UTF-8" ::
