@@ -5,7 +5,7 @@ lazy val commonSettings = Seq(
   version      := "0.1.0-SNAPSHOT",
 
   scalaVersion := "2.12.10",
-  crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.0"),
+  crossScalaVersions := Seq("2.11.12", "2.12.15", "2.13.6"),
 
   scalacOptions ++=
     "-encoding" :: "UTF-8" ::
@@ -14,7 +14,6 @@ lazy val commonSettings = Seq(
     "-explaintypes" ::
     "-feature" ::
     "-language:_" ::
-    "-Xfuture" ::
     "-Xlint" ::
     "-Ywarn-value-discard" ::
     "-Ywarn-unused" ::
@@ -26,6 +25,7 @@ lazy val commonSettings = Seq(
         "-Ywarn-extra-implicit" ::
         Nil
       case Some((2, 11) | (2, 12)) =>
+        "-Xfuture" ::
         "-Ywarn-nullary-override" ::
         "-Ywarn-nullary-unit" ::
         "-Ywarn-infer-any" ::
@@ -42,7 +42,9 @@ lazy val commonSettings = Seq(
 
 lazy val root = (project in file("."))
   .aggregate(cuidJS, cuidJVM)
-  .settings(commonSettings)
+  .settings(
+    skip in publish := true
+  )
 
 lazy val cuid = crossProject(JSPlatform, JVMPlatform)
   .settings(commonSettings)
