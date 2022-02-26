@@ -1,50 +1,32 @@
-import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
+inThisBuild(Seq(
+  organization := "com.github.cornerman",
+
+  scalaVersion := "2.12.15",
+  crossScalaVersions := Seq("2.11.12", "2.12.15", "2.13.8", "3.1.1"),
+
+  licenses := Seq("MIT License" -> url("https://opensource.org/licenses/MIT")),
+
+  homepage := Some(url("https://github.com/cornerman/scala-cuid")),
+
+  scmInfo := Some(ScmInfo(
+    url("https://github.com/cornerman/scala-cuid"),
+    "scm:git:git@github.com:cornerman/scala-cuid.git",
+    Some("scm:git:git@github.com:cornerman/scala-cuid.git"))
+  ),
+
+  pomExtra :=
+    <developers>
+      <developer>
+        <id>jkaroff</id>
+        <name>Johannes Karoff</name>
+        <url>https://github.com/cornerman</url>
+      </developer>
+    </developers>
+))
 
 lazy val commonSettings = Seq(
-  organization := "com.github.cornerman",
-  version      := "0.1.0-SNAPSHOT",
-
-  scalaVersion := "2.12.10",
-  crossScalaVersions := Seq("2.11.12", "2.12.15", "2.13.6"),
-
-  scalacOptions ++=
-    "-encoding" :: "UTF-8" ::
-    "-unchecked" ::
-    "-deprecation" ::
-    "-explaintypes" ::
-    "-feature" ::
-    "-language:_" ::
-    "-Xlint" ::
-    "-Ywarn-value-discard" ::
-    "-Ywarn-unused" ::
-    Nil,
-
-  scalacOptions ++= {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, 12) | (2, 13)) =>
-        "-Ywarn-extra-implicit" ::
-        Nil
-      case Some((2, 11) | (2, 12)) =>
-        "-Xfuture" ::
-        "-Ywarn-nullary-override" ::
-        "-Ywarn-nullary-unit" ::
-        "-Ywarn-infer-any" ::
-        "-Yno-adapted-args" ::
-        "-Ypartial-unification" ::
-        Nil
-      case _ =>
-        Nil
-    }
-  },
-
-  addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.10.3")
+  scalacOptions --= Seq("-Xfatal-warnings")
 )
-
-lazy val root = (project in file("."))
-  .aggregate(cuidJS, cuidJVM)
-  .settings(
-    skip in publish := true
-  )
 
 lazy val cuid = crossProject(JSPlatform, JVMPlatform)
   .settings(commonSettings)
