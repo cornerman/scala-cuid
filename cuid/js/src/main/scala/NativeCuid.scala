@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSImport
 
 @js.native
 @JSImport("cuid", JSImport.Default)
-private[cuid] object JsCuid extends js.Object {
+private object JsCuid extends js.Object {
   def apply(): String = js.native
 }
 
