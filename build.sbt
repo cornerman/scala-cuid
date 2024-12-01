@@ -1,8 +1,8 @@
 inThisBuild(Seq(
   organization := "com.github.cornerman",
 
-  scalaVersion := "2.12.19",
-  crossScalaVersions := Seq("2.11.12", "2.12.19", "2.13.13", "3.2.2"),
+  scalaVersion := "2.12.20",
+  crossScalaVersions := Seq("2.11.12", "2.12.20", "2.13.13", "3.2.2"),
 
   licenses := Seq("MIT License" -> url("https://opensource.org/licenses/MIT")),
 
